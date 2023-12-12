@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Users</title>
+</head>
+<body>
+<h1>Users Table</h1>
+<br/><br/>
+<a href="add_User">add User</a>
+<div>
+    <table border = "2">
+        <thead>
+        <tr>
+            <th>ID<th>
+            <th>Users First Name<th>
+            <th>Users Last Name<th>
+            <th>Users Age<th>
+        <tr>
+        </thead>
+        <tbody>
+        <tr th:each ="user : ${users}">
+            <td th:utext="${user.id}">...</td>
+            <td th:utext="${user.firstName}">...</td>
+            <td th:utext="${user.lastName}">...</td>
+            <td th:utext="${user.age}">...</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

@@ -40,7 +40,7 @@ public class CarsController {
     }
 
     @GetMapping(value = "/cars/count={carsNumber}")
-    public String printCarsByNumber (@PathVariable int carsNumber, ModelMap model){
+    public String printCarsByNumber (@PathVariable("carsNumber") int carsNumber, ModelMap model){
         List<Car> cars = new ArrayList<>();
         cars.add(car1);
         cars.add(car2);
