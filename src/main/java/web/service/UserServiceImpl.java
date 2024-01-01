@@ -4,6 +4,8 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Service;
 import web.config.HibernateConfig;
 import web.models.User;
+import web.repository.UserRepository;
+import web.repository.UserRepositoryImpl;
 
 import javax.persistence.*;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -15,36 +17,26 @@ import java.util.List;
 @Transactional
 public class UserServiceImpl implements UserService{
 
-    @PersistenceContext
-    private EntityManager entityManager;
-
+    UserRepository userRepository = new UserRepositoryImpl();
 
     @Override
     public void saveUser(User user) {
-        entityManager.persist(user);
+        userRepository.saveUser(user);
     }
 
     @Override
     public User loadUserById(long id) {
-        User user = entityManager.find(User.class, id);
-        entityManager.detach(user);
-        return user;
+        return userRepository.loadUserById(id);
     }
 
     @Override
     public void removeUserById(long id) {
-        User user = entityManager.find(User.class, id);
-        entityManager.remove(user);
+        userRepository.removeUserById(id);
     }
 
     @Override
     public List<User> loadAllUsers() {
-        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
-        CriteriaQuery<User> criteriaQuery = criteriaBuilder.createQuery(User.class);
-
-        criteriaQuery.select(criteriaQuery.from(User.class));
-
-        return entityManager.createQuery(criteriaQuery).getResultList();
+        return userRepository.loadAllUsers();
     }
 
 

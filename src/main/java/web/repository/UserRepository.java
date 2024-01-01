@@ -1,12 +1,10 @@
-package web.service;
+package web.repository;
 
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import web.models.User;
 
 import java.util.List;
 
-public interface UserService {
+public interface UserRepository {
     void saveUser(User user);
     User loadUserById(long id);
     void removeUserById(long id);
