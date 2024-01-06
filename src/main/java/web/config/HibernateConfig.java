@@ -30,7 +30,7 @@ import java.util.Properties;
 @EnableJpaRepositories
 @PropertySource("classpath:db.properties")
 @EnableTransactionManagement
-@ComponentScan(value = "web.service")
+@ComponentScan(basePackages = "web")
 public class HibernateConfig {
 
     @Resource
@@ -47,6 +47,7 @@ public class HibernateConfig {
 
         return dataSource;
     }
+
     @Bean
     public PlatformTransactionManager platformTransactionManager(EntityManagerFactory emf) {
         JpaTransactionManager transactionManager = new JpaTransactionManager();
@@ -78,10 +79,11 @@ public class HibernateConfig {
     @Bean
     public Properties getHibernateProperties(){
         Properties properties = new Properties();
-        properties.setProperty("hibernate.hbm2ddl.auto", "create");
+        properties.setProperty("hibernate.hbm2ddl.auto", "none");
         properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
 
         return properties;
     }
+
 }
 

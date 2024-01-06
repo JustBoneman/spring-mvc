@@ -1,6 +1,8 @@
 package web.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import web.config.HibernateConfig;
 import web.models.User;
@@ -17,7 +19,8 @@ import java.util.List;
 @Transactional
 public class UserServiceImpl implements UserService{
 
-    UserRepository userRepository = new UserRepositoryImpl();
+    @Autowired
+    private UserRepository userRepository;
 
     @Override
     public void saveUser(User user) {
@@ -39,5 +42,8 @@ public class UserServiceImpl implements UserService{
         return userRepository.loadAllUsers();
     }
 
-
+    @Override
+    public void changeUser(User user) {
+        userRepository.changeUser(user);
+    }
 }

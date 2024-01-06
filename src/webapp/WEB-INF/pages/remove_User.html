@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Remove User</title>
+</head>
+<body>
+<br/><br>
+<a href="http://localhost:8080/spring_mvc_war_exploded/users">Back to main page</a>
+<br/><br>
+<h1>Delete User By Id</h1>
+<form th:action="@{/users/remove_User}" method="post">
+    <p><input type="text" th:name="userId"></p>
+    <p><input type="submit" value="Delete" ></p>
+</form>
+<div th:if="${msg}" th:text="${msg}"></div>
+</body>
+</html>

@@ -2,18 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Add User</title>
+    <title>Change User</title>
 </head>
-<body>
 <br/><br>
 <a href="http://localhost:8080/spring_mvc_war_exploded/users">Back to main page</a>
 <br/><br>
-<h1>Add User</h1>
-<form action="#" th:action="@{/users/add_User}" th:object="${user}" method="post">
+<body>
+<h1>Please enter Id of user you want to change, and then new user info</h1>
+<form action="#" th:action="@{/users/change_User}" th:object="${user}" method="post">
+    <p>Id: <input type="text" th:field="*{id}"></p>
     <p>First Name: <input type="text" th:field="*{firstName}"/></p>
     <p>Last Name: <input type="text" th:field="*{lastName}"></p>
     <p>Age: <input type="text" th:field="*{age}"></p>
-    <p><input type="submit" value="Add" /></p>
+    <p><input type="submit" value="Change" /></p>
 </form>
+<div th:if="${msg}" th:text="${msg}"></div>
 </body>
 </html>
